@@ -1,7 +1,7 @@
 This is a library for the HDC1008 Humidity + Temp sensor
 
 Designed specifically to work with the HDC1008 breakout in the Adafruit shop 
-  ----> https://www.adafruit.com/products/1899
+  ----> https://www.adafruit.com/products/2635
 
 These displays use I2C to communicate, 2 pins are required to interface
 Adafruit invests time and resources providing this open source code, 
