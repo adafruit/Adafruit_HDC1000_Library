@@ -1,6 +1,6 @@
-This is a library for the HTU21D-F Humidity + Temp sensor
+This is a library for the HDC1008 Humidity + Temp sensor
 
-Designed specifically to work with the HTU21D-F in the Adafruit shop 
+Designed specifically to work with the HDC1008 breakout in the Adafruit shop 
   ----> https://www.adafruit.com/products/1899
 
 These displays use I2C to communicate, 2 pins are required to interface
@@ -14,10 +14,10 @@ BSD license, all text above must be included in any redistribution
 Check out the links above for our tutorials and wiring diagrams 
 
 To download. click the ZIP button in the top-middle navbar, 
-rename the uncompressed folder Adafruit_HTU21DF. 
-Check that the Adafruit_HTU21DF folder contains Adafruit_HTU21DF.cpp and Adafruit_HTU21DF.h
+rename the uncompressed folder Adafruit_HDC1000. 
+Check that the Adafruit_HDC1000 folder contains Adafruit_HDC1000.cpp and Adafruit_HDC1000.h
 
-Place the Adafruit_HTU21DF library folder your arduinosketchfolder/libraries/ folder. 
+Place the Adafruit_HDC1000 library folder your arduinosketchfolder/libraries/ folder. 
 You may need to create the libraries subfolder if its your first library. Restart the IDE.
 
 We also have a great tutorial on Arduino library installation at:
