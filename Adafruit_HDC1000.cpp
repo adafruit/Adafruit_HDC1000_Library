@@ -15,7 +15,9 @@
  ****************************************************/
 
 #include "Adafruit_HDC1000.h"
-#include <util/delay.h>
+#if defined(__AVR__)
+  #include <util/delay.h>
+#endif
 
 Adafruit_HDC1000::Adafruit_HDC1000() {
 }
