@@ -38,7 +38,7 @@ Atmega32u4 @ 8MHz |      X       |             |            |
 ESP8266           |      X       |             |            | 
 Atmega2560 @ 16MHz |      X       |             |            | Use SDA/SCL on pins 20 &amp; 21
 ATSAM3X8E         |      X       |             |            | Use SDA/SCL on pins 20 &amp; 21
-ATSAM21D          |      X       |             |            | 
+ATSAM21D          |      X       |             |            | Use SDA and SCL pins.
 ATtiny85 @ 16MHz  |             |             |     X       | 
 ATtiny85 @ 8M     |             |             |     X       | 
 
