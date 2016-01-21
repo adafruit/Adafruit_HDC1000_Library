@@ -50,10 +50,13 @@ class Adafruit_HDC1000 {
   float readTemperature(void);
   float readHumidity(void);
   void reset(void);
+  void drySensor(void);
 
   uint16_t read16(uint8_t a, uint8_t d=0);
   uint32_t read32(uint8_t a, uint8_t d=0);
-  
+  void writeConfig(uint16_t config);
+
+
  private:
   boolean readData(void);
   float humidity, temp;

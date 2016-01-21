@@ -40,11 +40,7 @@ void Adafruit_HDC1000::reset(void) {
   // reset, and select 14 bit temp & humidity
   uint16_t config = HDC1000_CONFIG_RST | HDC1000_CONFIG_MODE | HDC1000_CONFIG_TRES_14 | HDC1000_CONFIG_HRES_14;
 
-  Wire.beginTransmission(_i2caddr);
-  Wire.write(config>>8);
-  Wire.write(config&0xFF);
-  Wire.endTransmission();
-  delay(15);
+  writeConfig(config);
 }
 
 
@@ -70,6 +66,35 @@ float Adafruit_HDC1000::readHumidity(void) {
 }
 
 
+void Adafruit_HDC1000::drySensor(void)
+{
+   uint16_t origConfig = read16(0x2);
+
+   // reset, heat up, and select 14 bit temp & humidity
+   uint16_t newConfig =  HDC1000_CONFIG_RST | HDC1000_CONFIG_HEAT | HDC1000_CONFIG_MODE | HDC1000_CONFIG_TRES_14 | HDC1000_CONFIG_HRES_14;
+
+   writeConfig(newConfig);
+
+   delay(15);
+
+   // take 1000 readings & toss
+   for ( int i = 0; i < 1000; i++)  {
+     read32(HDC1000_TEMP, 20);
+   }
+
+   origConfig |= HDC1000_CONFIG_RST;
+   writeConfig(origConfig);
+   delay(15);
+}
+
+void Adafruit_HDC1000::writeConfig(uint16_t config) {
+  Wire.beginTransmission(_i2caddr);
+  Wire.beginTransmission(0x02);
+  Wire.write(config>>8);
+  Wire.write(config&0xFF);
+  Wire.endTransmission();
+  delay(15);
+}
 
 /*********************************************************************/
 
