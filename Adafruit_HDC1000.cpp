@@ -80,6 +80,7 @@ void Adafruit_HDC1000::drySensor(void)
    // take 1000 readings & toss
    for ( int i = 0; i < 1000; i++)  {
      read32(HDC1000_TEMP, 20);
+     delay(1);
    }
 
    origConfig |= HDC1000_CONFIG_RST;
