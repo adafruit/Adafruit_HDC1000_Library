@@ -30,7 +30,8 @@ boolean Adafruit_HDC1000::begin(uint8_t addr) {
   
   reset();
   if (read16(HDC1000_MANUFID) != 0x5449) return false;
-  if (read16(HDC1000_DEVICEID) != 0x1000) return false;
+  uint16_t device_id = read16(HDC1000_DEVICEID);
+  if (device_id != 0x1000 && device_id != 0x1050) return false;
   return true;
 }
 
