@@ -35,7 +35,7 @@ Adafruit_HDC1000::Adafruit_HDC1000() {}
  * param wire The TwoWire master, defaults to &Wire
  * @return Returns true if successful
  */
-bool Adafruit_HDC1000::begin(uint8_t addr, TwoWire *wire = &Wire) {
+bool Adafruit_HDC1000::begin(uint8_t addr, TwoWire *wire) {
   if (i2c_dev) {
     delete i2c_dev; // remove old interface
   }
@@ -49,8 +49,10 @@ bool Adafruit_HDC1000::begin(uint8_t addr, TwoWire *wire = &Wire) {
   reset();
   if (read16(HDC1000_MANUFID) != 0x5449)
     return false;
-  if (read16(HDC1000_DEVICEID) != 0x1000)
+  uint16_t device_id = read16(HDC1000_DEVICEID);
+  if ((device_id != 0x1000) && (device_id != 0x1050))
     return false;
+
   return true;
 }
 

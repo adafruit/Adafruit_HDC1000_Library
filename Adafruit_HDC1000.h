@@ -64,7 +64,7 @@ class Adafruit_HDC1000 {
 public:
   Adafruit_HDC1000();
 
-  bool begin(uint8_t a = HDC1000_I2CADDR, TwoWire *wire = &Wire);
+  bool begin(uint8_t addr = HDC1000_I2CADDR, TwoWire *wire = &Wire);
 
   float readTemperature(void);
 
