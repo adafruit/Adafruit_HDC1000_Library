@@ -32,7 +32,7 @@ Adafruit_HDC1000::Adafruit_HDC1000() {}
 /*!
  * @brief Starts I2C connection
  * @param addr I2C address of the HDC1000
- * param wire The TwoWire master, defaults to &Wire
+ * @param wire The TwoWire master, defaults to &Wire
  * @return Returns true if successful
  */
 bool Adafruit_HDC1000::begin(uint8_t addr, TwoWire *wire) {
@@ -56,7 +56,9 @@ bool Adafruit_HDC1000::begin(uint8_t addr, TwoWire *wire) {
   return true;
 }
 
-//!< Soft resets the HDC1000 over I2C
+/*!
+ * @brief Soft resets the HDC1000 over I2C
+ */
 void Adafruit_HDC1000::reset(void) {
   // reset, and select 14 bit temp & humidity
   uint16_t config = HDC1000_CONFIG_RST | HDC1000_CONFIG_MODE |
@@ -136,7 +138,7 @@ void Adafruit_HDC1000::writeConfig(uint16_t config) {
 /*!
  * @brief Reads 16 bits
  * @param addr I2C register address
- * @param delay Delay after write and before read
+ * @param delayms Delay after write and before read
  * @return Returns what was read
  */
 uint16_t Adafruit_HDC1000::read16(uint8_t addr, uint8_t delayms) {
@@ -157,7 +159,7 @@ uint16_t Adafruit_HDC1000::read16(uint8_t addr, uint8_t delayms) {
 /*!
  * @brief Reads 32 bits
  * @param addr I2C register address
- * @param delay Delay after write and before read
+ * @param delayms Delay after write and before read
  * @return Returns what was read
  */
 uint32_t Adafruit_HDC1000::read32(uint8_t addr, uint8_t delayms) {
