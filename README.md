@@ -1,4 +1,4 @@
-# Adafruit HDC1000 Library [![Build Status](https://travis-ci.org/adafruit/Adafruit_HDC1000_Library.svg?branch=master)](https://travis-ci.org/adafruit/Adafruit_HDC1000_Library)
+# Adafruit HDC1000 Library [![Build Status](https://github.com/adafruit/Adafruit_HDC1000_Library/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_HDC1000_Library/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_HDC1000_Library/html/index.html)
 
 This is a library for the HDC1008 Humidity + Temp sensor
 
