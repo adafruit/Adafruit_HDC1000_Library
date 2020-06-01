@@ -16,12 +16,9 @@
  * BSD license, all text above must be included in any redistribution
  */
 
-#if (ARDUINO >= 100)
 #include "Arduino.h"
-#else
-#include "WProgram.h"
-#endif
-#include "Wire.h"
+#include <Adafruit_BusIO_Register.h>
+#include <Adafruit_I2CDevice.h>
 
 #define HDC1000_I2CADDR 0x40 //!< HDC1000 I2C Address
 #define HDC1000_TEMP 0x00    //!< Temperature register address
@@ -66,48 +63,21 @@
 class Adafruit_HDC1000 {
 public:
   Adafruit_HDC1000();
-  /*!
-   * @brief Starts I2C connection
-   * @param a I2C address of the HDC1000
-   * @return Returns true if successful
-   */
-  boolean begin(uint8_t a = HDC1000_I2CADDR);
-  /*!
-   * @brief Gets the temperature over I2C from the HDC1000
-   * @return Returns the temperature
-   */
-  float readTemperature(void);
-  /*!
-   * @brief Gets the humidity over I2C from the HDC1000
-   * @return Returns the humidity
-   */
-  float readHumidity(void);
-  void reset(void);     //!< Resets the HDC1000 using the RESET pin
-  void drySensor(void); //!< Resets, heats up, selects temperature and humidity,
-                        //!< then takes 1000 readings and tosses
 
-  /*!
-   * @brief Reads 16 bits
-   * @param a First signed uint8 integer
-   * @param d Second signed uint8 integer
-   * @return Returns what was read
-   */
-  uint16_t read16(uint8_t a, uint8_t d = 0);
-  /*!
-   * @brief Reads 32 bits
-   * @param a First signed uint8 integer
-   * @param d Second signed uint8 integer
-   * @return Returns what was read
-   */
-  uint32_t read32(uint8_t a, uint8_t d = 0);
-  /*!
-   * @brief Writes config to HDC1000
-   * @param config Configuration settings to be written
-   */
+  bool begin(uint8_t addr = HDC1000_I2CADDR, TwoWire *wire = &Wire);
+
+  float readTemperature(void);
+
+  float readHumidity(void);
+  void reset(void);
+  void drySensor(void);
+
+  uint16_t read16(uint8_t addr, uint8_t delay = 0);
+  uint32_t read32(uint8_t addr, uint8_t delay = 0);
   void writeConfig(uint16_t config);
 
 private:
   boolean readData(void);
   float humidity, temp;
-  uint8_t _i2caddr;
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
 };
